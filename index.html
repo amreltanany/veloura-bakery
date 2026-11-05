@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VÈLÔURÁ — Artisan Cakes & Bakery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo" onclick="showSection('home')">
+        <span class="logo-mark">V</span>
+        <span class="logo-text">VÈLÔURÁ</span>
+      </a>
+      <nav class="nav">
+        <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#shop" class="nav-link" data-section="shop">Shop</a>
+        <a href="#custom" class="nav-link" data-section="custom">Customize</a>
+        <a href="#about" class="nav-link" data-section="about">Our Story</a>
+      </nav>
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 6h15l-1.5 9h-12z" />
+          <circle cx="9" cy="20" r="1.5" />
+          <circle cx="18" cy="20" r="1.5" />
+          <path d="M6 6L5 3H2" />
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home" data-section="home">Home</a>
+    <a href="#shop" data-section="shop">Shop</a>
+    <a href="#custom" data-section="custom">Customize</a>
+    <a href="#about" data-section="about">Our Story</a>
+  </div>
+
+  <main>
+    <!-- HOME -->
+    <section class="section home-section active" id="home">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Handcrafted with love</p>
+          <h1>Cakes that taste<br />like celebration</h1>
+          <p class="hero-sub">
+            Artisan cakes, pastries & custom creations made fresh every morning
+            with the finest ingredients.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="showSection('shop')">Shop Collection</button>
+            <button class="btn btn-outline" onclick="showSection('custom')">Customize a Cake</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-badge">Bestseller</div>
+            <div class="hero-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80')"></div>
+            <div class="hero-info">
+              <h3>Velvet Chocolate Layer</h3>
+              <p>From $48</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured -->
+      <div class="container">
+        <div class="section-header fade">
+          <h2>Featured Treats</h2>
+          <p>Our most loved cakes and pastries this week</p>
+        </div>
+        <div class="product-grid fade" id="featuredGrid"></div>
+      </div>
+
+      <!-- Categories -->
+      <div class="categories">
+        <div class="container">
+          <div class="section-header light fade">
+            <h2>Browse by Category</h2>
+          </div>
+          <div class="category-row fade">
+            <button class="cat-card" data-cat="cakes" onclick="filterAndShow('cakes')">
+              <span class="cat-icon">🎂</span>
+              <span>Celebration Cakes</span>
+            </button>
+            <button class="cat-card" data-cat="cupcakes" onclick="filterAndShow('cupcakes')">
+              <span class="cat-icon">🧁</span>
+              <span>Cupcakes</span>
+            </button>
+            <button class="cat-card" data-cat="pastries" onclick="filterAndShow('pastries')">
+              <span class="cat-icon">🥐</span>
+              <span>Pastries</span>
+            </button>
+            <button class="cat-card" data-cat="cookies" onclick="filterAndShow('cookies')">
+              <span class="cat-icon">🍪</span>
+              <span>Cookies</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-banner">
+        <div class="container cta-inner fade">
+          <div>
+            <h2>Dream it. We’ll bake it.</h2>
+            <p>Design your perfect cake with our interactive customizer — flavors, fillings, frosting & more.</p>
+          </div>
+          <button class="btn btn-primary" onclick="showSection('custom')">Start Customizing</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="section shop-section" id="shop">
+      <div class="container">
+        <div class="section-header fade">
+          <h2>Our Collection</h2>
+          <p>Freshly baked every day</p>
+        </div>
+        <div class="shop-toolbar">
+          <div class="filter-pills" id="filterPills">
+            <button class="pill active" data-filter="all">All</button>
+            <button class="pill" data-filter="cakes">Cakes</button>
+            <button class="pill" data-filter="cupcakes">Cupcakes</button>
+            <button class="pill" data-filter="pastries">Pastries</button>
+            <button class="pill" data-filter="cookies">Cookies</button>
+          </div>
+          <div class="sort-wrap">
+            <label for="sortSelect">Sort</label>
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name">Name</option>
+            </select>
+          </div>
+        </div>
+        <div class="product-grid" id="shopGrid"></div>
+      </div>
+    </section>
+
+    <!-- CUSTOMIZE -->
+    <section class="section custom-section" id="custom">
+      <div class="container">
+        <div class="section-header fade">
+          <h2>Create Your Cake</h2>
+          <p>Build it exactly the way you like — we’ll bake it fresh for you</p>
+        </div>
+
+        <div class="customizer">
+          <div class="customizer-preview">
+            <div class="cake-preview" id="cakePreview">
+              <div class="cake-tier base" id="previewBase"></div>
+              <div class="cake-tier mid" id="previewMid"></div>
+              <div class="cake-tier top" id="previewTop"></div>
+              <div class="cake-topping" id="previewTopping"></div>
+            </div>
+            <div class="preview-summary" id="previewSummary">
+              <h3 id="customName">Your Custom Cake</h3>
+              <p class="custom-price" id="customPrice">$0.00</p>
+              <ul id="customDetails"></ul>
+            </div>
+          </div>
+
+          <div class="customizer-options">
+            <div class="option-group">
+              <label>Size</label>
+              <div class="option-row" id="sizeOptions">
+                <button class="option-btn active" data-value="6" data-price="38">6" (serves 8)</button>
+                <button class="option-btn" data-value="8" data-price="52">8" (serves 14)</button>
+                <button class="option-btn" data-value="10" data-price="72">10" (serves 24)</button>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label>Cake Flavor</label>
+              <div class="option-row" id="flavorOptions">
+                <button class="option-btn active" data-value="vanilla" data-price="0">Vanilla Bean</button>
+                <button class="option-btn" data-value="chocolate" data-price="4">Belgian Chocolate</button>
+                <button class="option-btn" data-value="redvelvet" data-price="6">Red Velvet</button>
+                <button class="option-btn" data-value="lemon" data-price="4">Lemon Zest</button>
+                <button class="option-btn" data-value="carrot" data-price="5">Spiced Carrot</button>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label>Filling</label>
+              <div class="option-row" id="fillingOptions">
+                <button class="option-btn active" data-value="buttercream" data-price="0">Vanilla Buttercream</button>
+                <button class="option-btn" data-value="ganache" data-price="5">Chocolate Ganache</button>
+                <button class="option-btn" data-value="raspberry" data-price="6">Raspberry Compote</button>
+                <button class="option-btn" data-value="caramel" data-price="5">Salted Caramel</button>
+                <button class="option-btn" data-value="creamcheese" data-price="4">Cream Cheese</button>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label>Frosting</label>
+              <div class="option-row" id="frostingOptions">
+                <button class="option-btn active" data-value="buttercream" data-price="0" data-color="#f5e6d3">Classic Buttercream</button>
+                <button class="option-btn" data-value="chocolate" data-price="4" data-color="#5c3a2e">Chocolate</button>
+                <button class="option-btn" data-value="creamcheese" data-price="3" data-color="#f8f0e8">Cream Cheese</button>
+                <button class="option-btn" data-value="whipped" data-price="2" data-color="#fffaf5">Light Whipped</button>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label>Toppings <span class="optional">(optional)</span></label>
+              <div class="option-row multi" id="toppingOptions">
+                <button class="option-btn" data-value="freshfruit" data-price="8">Fresh Berries</button>
+                <button class="option-btn" data-value="gold" data-price="12">Edible Gold Leaf</button>
+                <button class="option-btn" data-value="flowers" data-price="10">Edible Flowers</button>
+                <button class="option-btn" data-value="chocolatecurls" data-price="6">Chocolate Curls</button>
+                <button class="option-btn" data-value="macarons" data-price="14">Macarons</button>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label for="cakeMessage">Message on Cake <span class="optional">(optional)</span></label>
+              <input type="text" id="cakeMessage" placeholder="Happy Birthday, Sarah!" maxlength="40" />
+            </div>
+
+            <div class="option-group">
+              <label for="cakeNotes">Special Requests</label>
+              <textarea id="cakeNotes" rows="2" placeholder="Any allergies or preferences..."></textarea>
+            </div>
+
+            <button class="btn btn-primary btn-full" id="addCustomToCart">
+              Add Custom Cake to Cart — <span id="addCustomPrice">$38.00</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-text fade">
+          <p class="eyebrow">Our Story</p>
+          <h2>Baked with heart,<br />served with joy</h2>
+          <p>
+            VÈLÔURÁ began in a tiny kitchen with one oven and a big dream:
+            to create cakes that make ordinary days feel special. Every recipe is
+            developed in-house, every layer is hand-frosted, and every order is
+            treated like it’s for our own family.
+          </p>
+          <p>
+            We source butter, chocolate, and flour from trusted small producers,
+            and we never use artificial colors or preservatives. Freshness isn’t
+            a marketing line for us — it’s the only way we know how to bake.
+          </p>
+          <div class="stats">
+            <div><strong>12+</strong><span>Years baking</span></div>
+            <div><strong>40k+</strong><span>Cakes delivered</span></div>
+            <div><strong>98%</strong><span>Happy customers</span></div>
+          </div>
+        </div>
+        <div class="about-visual fade">
+          <div class="about-img" style="background-image: url('https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=700&q=80')"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">V</span>
+        <span>VÈLÔURÁ</span>
+        <p>Artisan cakes & bakery since 2012</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Shop</h4>
+          <a href="#" onclick="showSection('shop');return false;">All Products</a>
+          <a href="#" onclick="filterAndShow('cakes');return false;">Cakes</a>
+          <a href="#" onclick="showSection('custom');return false;">Custom Cakes</a>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+          <a href="#">Allergens</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:hello@veloura.com">hello@veloura.com</a>
+          <a href="tel:+15551234567">(555) 123-4567</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">© 2026 VÈLÔURÁ. Made with butter & love.</div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-btn" id="closeCart" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <p>Your cart is empty</p>
+        <button class="btn btn-outline" onclick="showSection('shop'); closeCart();">Browse Treats</button>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" hidden>
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">$0.00</strong>
+      </div>
+      <p class="cart-note">Shipping calculated at checkout</p>
+      <button class="btn btn-primary btn-full" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal" id="checkoutModal">
+    <div class="modal-content checkout-modal">
+      <button class="close-btn modal-close" id="closeCheckout">×</button>
+      <div class="checkout-steps">
+        <div class="step active" data-step="1">1. Details</div>
+        <div class="step" data-step="2">2. Delivery</div>
+        <div class="step" data-step="3">3. Payment</div>
+      </div>
+
+      <form id="checkoutForm">
+        <!-- Step 1: Contact -->
+        <div class="checkout-panel active" data-panel="1">
+          <h3>Contact Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" required placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" required placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" required placeholder="(555) 123-4567" />
+          </div>
+          <button type="button" class="btn btn-primary btn-full next-step">Continue to Delivery</button>
+        </div>
+
+        <!-- Step 2: Delivery -->
+        <div class="checkout-panel" data-panel="2">
+          <h3>Delivery or Pickup</h3>
+          <div class="delivery-options">
+            <label class="delivery-card">
+              <input type="radio" name="fulfillment" value="delivery" checked />
+              <div>
+                <strong>Delivery</strong>
+                <span>$8.00 · 1–2 days</span>
+              </div>
+            </label>
+            <label class="delivery-card">
+              <input type="radio" name="fulfillment" value="pickup" />
+              <div>
+                <strong>Store Pickup</strong>
+                <span>Free · Ready tomorrow</span>
+              </div>
+            </label>
+          </div>
+          <div id="addressFields">
+            <div class="form-group">
+              <label for="address">Street Address</label>
+              <input type="text" id="address" placeholder="123 Baker Street" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="New York" />
+              </div>
+              <div class="form-group">
+                <label for="zip">ZIP</label>
+                <input type="text" id="zip" placeholder="10001" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="deliveryDate">Preferred Date</label>
+            <input type="date" id="deliveryDate" />
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline prev-step">Back</button>
+            <button type="button" class="btn btn-primary next-step">Continue to Payment</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Payment -->
+        <div class="checkout-panel" data-panel="3">
+          <h3>Payment</h3>
+          <div class="form-group">
+            <label for="cardName">Name on Card</label>
+            <input type="text" id="cardName" placeholder="Jane Doe" />
+          </div>
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" placeholder="4242 4242 4242 4242" maxlength="19" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiry">Expiry</label>
+              <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" />
+            </div>
+            <div class="form-group">
+              <label for="cvc">CVC</label>
+              <input type="text" id="cvc" placeholder="123" maxlength="4" />
+            </div>
+          </div>
+          <div class="order-summary-box" id="orderSummary"></div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline prev-step">Back</button>
+            <button type="submit" class="btn btn-primary">Place Order</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal" id="successModal">
+    <div class="modal-content success-modal">
+      <div class="success-icon">✓</div>
+      <h2>Order Confirmed!</h2>
+      <p id="successMessage">Thank you for your order. We’ll start baking right away.</p>
+      <p class="order-id" id="orderId"></p>
+      <button class="btn btn-primary" id="closeSuccess">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- PRODUCT QUICK VIEW (optional simple) -->
+  <div class="modal" id="productModal">
+    <div class="modal-content product-modal">
+      <button class="close-btn modal-close" id="closeProduct">×</button>
+      <div class="product-modal-body" id="productModalBody"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
