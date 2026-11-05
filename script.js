@@ -35,7 +35,7 @@ const products = [
     category: "pastries",
     price: 28,
     desc: "Buttery shortcrust, tangy lemon curd, and fresh raspberries.",
-    image: "https://images.unsplash.com/photo-1519914218760-ca09b9c0c0c4?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1768236360495-8c32c6645590?w=500&q=80",
     featured: true
   },
   {
@@ -44,7 +44,7 @@ const products = [
     category: "cupcakes",
     price: 32,
     desc: "Box of 6 classic red velvet with cream cheese frosting.",
-    image: "https://images.unsplash.com/photo-1614707267537-b85aaf00c0b7?w=500&q=80",
+    image: "https://images.unsplash.com/photo-1759524322472-3f146a43cf9a?w=500&q=80",
     badge: "Popular"
   },
   {
@@ -77,7 +77,7 @@ const products = [
     category: "cakes",
     price: 52,
     desc: "Japanese matcha sponge with white chocolate ganache.",
-    image: "https://images.unsplash.com/photo-1586985289906-40674dc61b63?w=500&q=80"
+    image: "https://images.unsplash.com/photo-1759324351433-c5a1063f8ac6?w=500&q=80"
   },
   {
     id: 10,
